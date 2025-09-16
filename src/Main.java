@@ -1,29 +1,49 @@
+import Storage.Bag;
+import Storage.Box;
+import Storage.Colour;
+import Storage.Item;
+
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Bag linenBag = new Bag();
-        linenBag.material = "Linen";
-        linenBag.hasZipper = false;
-
+        Scanner scanner = new Scanner(System.in);
+        Bag linenBag = new Bag("linen", 200, 15, true, "Autumn25");
+        System.out.println("Please enter bag's colour:");
+        String inputColour = scanner.next();
         Colour colour = new Colour();
+        colour.colourName = inputColour;
         colour.colourNumber = 12;
-        colour.colourName = "Green";
         linenBag.colour = colour;
 
-        Item keys = new Item();
-        keys.itemName = "Keys";
-        keys.ItemPrice = 1;
+        Item keys = new Item("Keys", 1);
         linenBag.fillTheBag(keys);
 
-        linenBag.calculateFinalPrice(200, 5);
-
         System.out.println(linenBag.getFullInfo());
+        System.out.println(linenBag.getBagInfo());
+        System.out.println(linenBag.storageInfo());
+        System.out.println(linenBag.getDateOfThePurchase());
+//        System.out.println("The bag final price is: " + linenBag.getFinalPrice());
+//        System.out.println(linenBag.ContainZipper());
 
+        Box paperBox = new Box("Paper", 20, "Carrying things");
+        System.out.println("Please enter box's colour:");
+        String inputColour2 = scanner.next();
+        Colour colour2 = new Colour();
+        colour2.colourNumber = 9;
+        colour2.colourName = inputColour2;
+        paperBox.colour = colour2;
+
+        Item pen = new Item("Pen", 2);
+        paperBox.fillTheBox(pen);
+
+        System.out.println(paperBox.getFullInfo());
+        System.out.println(paperBox.getBoxInfo());
+        System.out.println(paperBox.storageInfo());
 
 //      String firstName = "Kseniya";
 //      String lastName = "Manuilava";
-//      String jobTitle = "QA engeneer";
+//      String jobTitle = "QA engineer";
 //
 //      System.out.println(firstName +" " + lastName + " works as a " + jobTitle + ".");
 //
@@ -63,11 +83,11 @@ public class Main {
 //
 //        System.out.println("Your have entered: " + userCity);
 //
-//        int stringLenght = userCity.length();
+//        int stringLength = userCity.Length();
 //        boolean cityNameFilledIn = userCity.isEmpty();
 //        char firstLetterOfTheCity = userCity.charAt(0);
 //
-//        System.out.println("City lenght: " + stringLenght);
+//        System.out.println("City Length: " + stringLength);
 //
 //        String defaultCityName;
 //        defaultCityName = "Vitebsk";
@@ -88,7 +108,7 @@ public class Main {
 //
 //        String loweCaseDefaultCityName = defaultCityName.toLowerCase();
 //
-//        System.out.println("The user left the input field emtpy: " + cityNameFilledIn);
+//        System.out.println("The user left the input field empty: " + cityNameFilledIn);
 //
 //        System.out.println("The first lerret of the City is " + firstLetterOfTheCity);
 //
