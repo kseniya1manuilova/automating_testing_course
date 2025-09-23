@@ -1,3 +1,5 @@
+import Storage.Colour;
+
 public class Bag {
     //    String colour;
     String material;

@@ -38,7 +38,7 @@ public class Bag extends StorageType {
     }
 
     public String getMaterialInfo() {
-        return String.format("\nThe bag is made of: %s\n", content.itemName);
+        return String.format("\nThe bag is made of: %s\n", material);
     }
 
     public String getBagInfo() {

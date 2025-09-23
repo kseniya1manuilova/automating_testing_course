@@ -3,12 +3,19 @@ import Storage.Box;
 import Storage.Colour;
 import Storage.Item;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
+
         Bag linenBag = new Bag("linen", 200, 15, true, "Autumn25");
+
         System.out.println("Please enter bag's colour:");
         String inputColour = scanner.next();
         Colour colour = new Colour();
@@ -19,12 +26,12 @@ public class Main {
         Item keys = new Item("Keys", 1);
         linenBag.fillTheBag(keys);
 
-        System.out.println(linenBag.getFullInfo());
-        System.out.println(linenBag.getBagInfo());
-        System.out.println(linenBag.storageInfo());
-        System.out.println(linenBag.getDateOfThePurchase());
-//        System.out.println("The bag final price is: " + linenBag.getFinalPrice());
-//        System.out.println(linenBag.ContainZipper());
+        saveBagInfoToFile(linenBag, keys);
+        readBagInfoFromFile();
+
+//        System.out.println(linenBag.getFullInfo());
+//        System.out.println(linenBag.getBagInfo());
+//        System.out.println(linenBag.storageInfo());
 
         Box paperBox = new Box("Paper", 20, "Carrying things");
         System.out.println("Please enter box's colour:");
@@ -40,6 +47,30 @@ public class Main {
         System.out.println(paperBox.getFullInfo());
         System.out.println(paperBox.getBoxInfo());
         System.out.println(paperBox.storageInfo());
+    }
+
+    private static void saveBagInfoToFile(Bag bag, Item item) {
+        try (FileWriter file = new FileWriter("/Users/kseniyamanuilava/GithubReps/Text.txt")) {
+            file.write(bag.getMaterialInfo() + "\n");
+            file.write(bag.colour.colourName + "\n");
+            file.write(bag.getFinalPrice() + "\n");
+            file.write(bag.collectionName + "\n");
+            file.write(item.itemName + "\n");
+            System.out.println("Your bag info saved!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void readBagInfoFromFile() throws FileNotFoundException {
+        File file = new File("/Users/kseniyamanuilava/GithubReps/Text.txt");
+        Scanner scanner = new Scanner(file);
+        ArrayList<String> fileContents = new ArrayList<>();
+        while (scanner.hasNext()) {
+            fileContents.add(scanner.nextLine());
+        }
+        fileContents.forEach(System.out::println);
+    }
 
 //      String firstName = "Kseniya";
 //      String lastName = "Manuilava";
@@ -128,5 +159,5 @@ public class Main {
 //        System.out.println(loweCaseDefaultCityName);
 //
 //        System.out.println(userFirstNameAndYob);
-    }
+
 }
