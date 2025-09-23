@@ -14,48 +14,32 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
 
-        Bag linenBag = new Bag("linen", 200, 15, true, "Autumn25");
+        while (true) {
+            System.out.println("1 - Create a new bag");
+            System.out.println("2 - Show previously added bags");
+            System.out.println("3 - Exit");
+            System.out.println("Chose any option: ");
 
-        System.out.println("Please enter bag's colour:");
-        String inputColour = scanner.next();
-        Colour colour = new Colour();
-        colour.colourName = inputColour;
-        colour.colourNumber = 12;
-        linenBag.colour = colour;
+            int selectedOption = scanner.nextInt();
 
-        Item keys = new Item("Keys", 1);
-        linenBag.fillTheBag(keys);
-
-        saveBagInfoToFile(linenBag, keys);
-        readBagInfoFromFile();
-
-//        System.out.println(linenBag.getFullInfo());
-//        System.out.println(linenBag.getBagInfo());
-//        System.out.println(linenBag.storageInfo());
-
-        Box paperBox = new Box("Paper", 20, "Carrying things");
-        System.out.println("Please enter box's colour:");
-        String inputColour2 = scanner.next();
-        Colour colour2 = new Colour();
-        colour2.colourNumber = 9;
-        colour2.colourName = inputColour2;
-        paperBox.colour = colour2;
-
-        Item pen = new Item("Pen", 2);
-        paperBox.fillTheBox(pen);
-
-        System.out.println(paperBox.getFullInfo());
-        System.out.println(paperBox.getBoxInfo());
-        System.out.println(paperBox.storageInfo());
+            if (selectedOption == 1) {
+                createBag(scanner);
+            } else if (selectedOption == 2) {
+                readBagInfoFromFile();
+            } else if (selectedOption == 3) {
+                System.out.println("Bye!");
+                break;
+            }
+        }
     }
 
     private static void saveBagInfoToFile(Bag bag, Item item) {
         try (FileWriter file = new FileWriter("/Users/kseniyamanuilava/GithubReps/Text.txt")) {
-            file.write(bag.getMaterialInfo() + "\n");
-            file.write(bag.colour.colourName + "\n");
-            file.write(bag.getFinalPrice() + "\n");
-            file.write(bag.collectionName + "\n");
-            file.write(item.itemName + "\n");
+            file.write("The bag is made of: " + bag.getMaterialInfo() + "\n");
+            file.write("The bag colour is: " + bag.colour.colourName + "\n");
+            file.write("The bag final price will be: " + bag.getFinalPrice() + "\n");
+            file.write("This bag from " + bag.collectionName + " collection\n");
+            file.write("This bag contain: " + item.itemName + "\n");
             System.out.println("Your bag info saved!");
         } catch (IOException e) {
             e.printStackTrace();
@@ -71,6 +55,70 @@ public class Main {
         }
         fileContents.forEach(System.out::println);
     }
+
+    private static void createBag(Scanner scanner) {
+        System.out.println("Enter bag colour: ");
+        Colour colour = new Colour();
+        colour.colourName = scanner.next();
+        colour.colourNumber = 11;
+
+        System.out.println("Enter bag material: ");
+        String material = scanner.next();
+
+        System.out.println("Enter bag price: ");
+        double price = scanner.nextDouble();
+
+        System.out.println("Enter bag discount: ");
+        double discount = scanner.nextDouble();
+
+        System.out.println("The bag has zipper? please type true or false: ");
+        boolean hasZipper = scanner.nextBoolean();
+
+        System.out.println("Enter collection name: ");
+        String collectionName = scanner.next();
+
+        Item pen = new Item("Pen", 2);
+
+        Bag bag = new Bag(material, price, discount, hasZipper, collectionName);
+        bag.colour = colour;
+        bag.fillTheBag(pen);
+        saveBagInfoToFile(bag, pen);
+
+
+//        Bag linenBag = new Bag("linen", 200, 15, true, "Autumn25");
+//
+//        System.out.println("Please enter bag's colour:");
+//        String inputColour = scanner.next();
+//        Colour colour = new Colour();
+//        colour.colourName = inputColour;
+//        colour.colourNumber = 12;
+//        linenBag.colour = colour;
+//
+//        Item keys = new Item("Keys", 1);
+//        linenBag.fillTheBag(keys);
+//
+//        saveBagInfoToFile(linenBag, keys);
+//        readBagInfoFromFile();
+//
+//        System.out.println(linenBag.getFullInfo());
+//        System.out.println(linenBag.getBagInfo());
+//        System.out.println(linenBag.storageInfo());
+//
+//        Box paperBox = new Box("Paper", 20, "Carrying things");
+//        System.out.println("Please enter box's colour:");
+//        String inputColour2 = scanner.next();
+//        Colour colour2 = new Colour();
+//        colour2.colourNumber = 9;
+//        colour2.colourName = inputColour2;
+//        paperBox.colour = colour2;
+//
+//        Item pen = new Item("Pen", 2);
+//        paperBox.fillTheBox(pen);
+//
+//        System.out.println(paperBox.getFullInfo());
+//        System.out.println(paperBox.getBoxInfo());
+//        System.out.println(paperBox.storageInfo());
+//    }
 
 //      String firstName = "Kseniya";
 //      String lastName = "Manuilava";
@@ -160,4 +208,5 @@ public class Main {
 //
 //        System.out.println(userFirstNameAndYob);
 
+    }
 }

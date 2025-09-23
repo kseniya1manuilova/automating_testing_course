@@ -19,7 +19,7 @@ public class Bag extends StorageType {
         calculateFinalPrice();
     }
 
-    public Bag(String material, double price) {
+    public Bag(String material, double price, String string, String discount, String collectionName) {
         this.material = material;
         this.price = price;
         calculateFinalPrice();
