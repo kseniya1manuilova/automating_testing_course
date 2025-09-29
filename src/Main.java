@@ -8,12 +8,12 @@ public class Main {
 //        additionalHomework2Task1();
 //        additionalHomework2Task2();
 //        additionalHomework2Task3();
-//        additionalHomework2Task4();
+        additionalHomework2Task4();
 //        additionalHomework2Task5();
 //        additionalHomework2Task6();
 //        additionalHomework2Task7();
 //        additionalHomework2Task8();
-        additionalHomework2Task9();
+//        additionalHomework2Task9();
     }
 
     public static void myFirstProgram() {
@@ -114,8 +114,7 @@ public class Main {
     public static void additionalHomework2Task1() {
         System.out.print("Please enter your number: ");
         int number = new Scanner(System.in).nextInt();
-        String message = (number >= 10) ? "The number is greater than ten" :
-                "The number is less than ten";
+        String message = (number >= 10) ? "The number is greater than ten" : "The number is less than ten";
         System.out.println(message);
     }
 
@@ -146,36 +145,28 @@ public class Main {
             System.out.print("Сongrats the triangle is equilateral!");
         } else if (firstSide == secondSide || secondSide == thirdSide || firstSide == thirdSide) {
             System.out.print("Сongrats the triangle is isosceles!");
-        } else
-            System.out.print("Сongrats the triangle is scalene!");
+        } else System.out.print("Сongrats the triangle is scalene!");
     }
 
     public static void additionalHomework2Task4() {
         Scanner scanner = new Scanner(System.in);
-        int a, b, c, d;
+
         System.out.println("Please enter 4 numbers:");
-        a = scanner.nextInt();
-        b = scanner.nextInt();
-        c = scanner.nextInt();
-        d = scanner.nextInt();
+        int  arraySize = 4;
+
+        int[] numbers = new int[arraySize];
         int negative = 0;
         int positive = 0;
-        if (a > 0)
-            positive++;
-        else if (a < 0)
-            negative++;
-        if (b > 0)
-            positive++;
-        else if (b < 0)
-            negative++;
-        if (c > 0)
-            positive++;
-        else if (c < 0)
-            negative++;
-        if (d > 0)
-            positive++;
-        else if (d < 0)
-            negative++;
+
+        for (int i = 0; i < arraySize; i++) {
+            numbers[i] = scanner.nextInt();
+
+            if (numbers[i] > 0) {
+                positive++;
+            } else if (numbers[i] < 0) {
+                negative++;
+            }
+        }
         System.out.println("Number of negative numbers: " + negative);
         System.out.println("Number of positive numbers: " + positive);
     }
