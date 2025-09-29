@@ -1,7 +1,6 @@
-import Storage.Bag;
-import Storage.Box;
-import Storage.Colour;
-import Storage.Item;
+import storage.Bag;
+import storage.Colour;
+import storage.Item;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,20 +21,23 @@ public class Main {
 
             int selectedOption = scanner.nextInt();
 
-            if (selectedOption == 1) {
-                createBag(scanner);
-            } else if (selectedOption == 2) {
-                readBagInfoFromFile();
-            } else if (selectedOption == 3) {
-                System.out.println("Bye!");
-                break;
+            switch (selectedOption) {
+                case 1:
+                    createBag(scanner);
+                    break;
+                case 2:
+                    readBagInfoFromFile();
+                    break;
+                case 3:
+                    System.out.println("Bye!");
+                    return;
             }
         }
     }
 
     private static void saveBagInfoToFile(Bag bag, Item item) {
         try (FileWriter file = new FileWriter("/Users/kseniyamanuilava/GithubReps/Text.txt")) {
-            file.write("The bag is made of: " + bag.getMaterialInfo() + "\n");
+            file.write(bag.getMaterialInfo());
             file.write("The bag colour is: " + bag.colour.colourName + "\n");
             file.write("The bag final price will be: " + bag.getFinalPrice() + "\n");
             file.write("This bag from " + bag.collectionName + " collection\n");

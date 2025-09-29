@@ -1,7 +1,7 @@
-package Storage;
+package storage;
 
 public class StorageType {
-    protected String storageType;
+    protected String typeName;
     protected String material;
     protected String dateOfThePurchase;
     protected double yearOfProduction;
@@ -9,12 +9,10 @@ public class StorageType {
     public Item content;
 
     public String storageInfo() {
-        this.storageType = storageType;
-        return String.format("Storage type is: " + storageType);
+        return String.format("Storage type is: " + typeName);
     }
 
     public String getDateOfThePurchase(){
-        this.dateOfThePurchase = dateOfThePurchase;
         return String.format("The purchase was made: " + dateOfThePurchase);
 
     }

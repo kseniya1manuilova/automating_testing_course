@@ -1,4 +1,4 @@
-package Storage;
+package storage;
 
 public class Item {
     public String itemName;

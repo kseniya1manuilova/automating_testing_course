@@ -1,4 +1,4 @@
-package Storage;
+package storage;
 
 public class Bag extends StorageType {
     public String collectionName;
@@ -13,7 +13,7 @@ public class Bag extends StorageType {
         this.discount = discount;
         this.hasZipper = hasZipper;
         this.collectionName = collectionName;
-        storageType = "Bag";
+        typeName = "Bag";
         yearOfProduction = 1990;
         dateOfThePurchase = "June 11";
         calculateFinalPrice();
@@ -42,7 +42,7 @@ public class Bag extends StorageType {
     }
 
     public String getBagInfo() {
-        return String.format("\nYour item type is %s and it produced in: %.0f.", storageType, yearOfProduction);
+        return String.format("\nYour item type is %s and it produced in: %.0f.", typeName, yearOfProduction);
     }
 
     public void fillTheBag(Item item) {

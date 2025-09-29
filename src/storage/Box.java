@@ -1,4 +1,4 @@
-package Storage;
+package storage;
 
 public class Box extends StorageType {
     private double price;
@@ -9,7 +9,7 @@ public class Box extends StorageType {
         this.material = material;
         this.price = price;
         this.boxUsage = boxUsage;
-        storageType = "Box";
+        typeName = "Box";
         yearOfProduction = 2009;
         dateOfThePurchase = "May 12";
     }
@@ -34,11 +34,11 @@ public class Box extends StorageType {
     }
 
     public String getBoxInfo() {
-        return String.format("\nYour item type is %s and it produced in: %.0f.", storageType, yearOfProduction);
+        return String.format("\nYour item type is %s and it produced in: %.0f.", typeName, yearOfProduction);
     }
 
     @Override
     public String storageInfo() {
-        return "Storage type is: " + storageType + ". Congratulations, your box is the best!";
+        return "Storage type is: " + typeName + ". Congratulations, your box is the best!";
     }
 }
