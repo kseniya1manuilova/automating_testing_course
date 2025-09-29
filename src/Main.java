@@ -129,7 +129,7 @@ public class Main {
             System.out.println("Your grade is D!");
         } else if (score >= 50) {
             System.out.println("Your grade is E!");
-        } else if (score <= 49) {
+        } else {
             System.out.println("Your grade is F!");
         }
     }
