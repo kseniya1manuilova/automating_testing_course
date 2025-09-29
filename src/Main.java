@@ -3,14 +3,25 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         myFirstProgram();
+
         homework1Task1();
         homework1Task2();
         homework1Task3();
+
         homework2Task1();
         homework2Task2();
         homework2Task3();
         homework2Task4();
 
+        additionalHomework2Task1();
+        additionalHomework2Task2();
+        additionalHomework2Task3();
+        additionalHomework2Task4();
+        additionalHomework2Task5();
+        additionalHomework2Task6();
+        additionalHomework2Task7();
+        additionalHomework2Task8();
+        additionalHomework2Task9();
     }
 
     public static void myFirstProgram() {
@@ -108,7 +119,6 @@ public class Main {
 
     }
 
-
     public static void homework2Task1() {
         Scanner scanner = new Scanner(System.in);
         int score;
@@ -196,6 +206,155 @@ public class Main {
 
         }
     }
-}
+    public static void additionalHomework2Task1() {
+        System.out.print("Please enter your number: ");
+        int number = new Scanner(System.in).nextInt();
+        String message = (number >= 10) ? "The number is greater than ten" : "The number is less than ten";
+        System.out.println(message);
+    }
 
+    public static void additionalHomework2Task2() {
+        System.out.print("Please enter first number: ");
+        int firstNumber = new Scanner(System.in).nextInt();
+
+        System.out.print("Please enter second number: ");
+        int secondNumber = new Scanner(System.in).nextInt();
+        if (firstNumber > secondNumber) {
+            System.out.print("The first number is greater than the second.");
+        } else if (firstNumber == secondNumber) {
+            System.out.print("The numbers are equal.");
+        } else System.out.print("The second number is greater than the first.");
+    }
+
+    public static void additionalHomework2Task3() {
+        System.out.print("Please enter the lengths of the first side: ");
+        int firstSide = new Scanner(System.in).nextInt();
+
+        System.out.print("Please enter the lengths of the second side: ");
+        int secondSide = new Scanner(System.in).nextInt();
+
+        System.out.print("Please enter the lengths of the third side: ");
+        int thirdSide = new Scanner(System.in).nextInt();
+
+        if (firstSide == secondSide && secondSide == thirdSide) {
+            System.out.print("Сongrats the triangle is equilateral!");
+        } else if (firstSide == secondSide || secondSide == thirdSide || firstSide == thirdSide) {
+            System.out.print("Сongrats the triangle is isosceles!");
+        } else System.out.print("Сongrats the triangle is scalene!");
+    }
+
+    public static void additionalHomework2Task4() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Please enter 4 numbers:");
+        int  arraySize = 4;
+
+        int[] numbers = new int[arraySize];
+        int negative = 0;
+        int positive = 0;
+
+        for (int i = 0; i < arraySize; i++) {
+            numbers[i] = scanner.nextInt();
+
+            if (numbers[i] > 0) {
+                positive++;
+            } else if (numbers[i] < 0) {
+                negative++;
+            }
+        }
+        System.out.println("Number of negative numbers: " + negative);
+        System.out.println("Number of positive numbers: " + positive);
+    }
+
+    public static void additionalHomework2Task5() {
+        Scanner scanner = new Scanner(System.in);
+        int a, b, c;
+        System.out.println("Please enter 3 numbers:");
+        a = scanner.nextInt();
+        b = scanner.nextInt();
+        c = scanner.nextInt();
+        if (a > b && a > c) {
+            System.out.println(a);
+        } else if (b > a && b > c) {
+            System.out.println(b);
+        } else System.out.println(c);
+    }
+
+    public static void additionalHomework2Task6() {
+        Scanner scanner = new Scanner(System.in);
+        int a, b, c;
+        System.out.println("Please enter 3 numbers:");
+        a = scanner.nextInt();
+        b = scanner.nextInt();
+        c = scanner.nextInt();
+
+        int min = a;
+        int max = a;
+
+        if (b < min) {
+            min = b;
+        }
+        if (b > max) {
+            max = b;
+        }
+        if (c < min) {
+            min = c;
+        }
+        if (c > max) {
+            max = c;
+        }
+        int sum = max + min;
+        System.out.println(sum);
+    }
+
+    public static void additionalHomework2Task7() {
+        System.out.println("Please enter any number:");
+        int number = new Scanner(System.in).nextInt();
+        String message = (number % 2 == 0) ? "Even number" : "Odd number";
+        System.out.println(message);
+    }
+
+    public static void additionalHomework2Task8() {
+        int beerPrice = 3;
+        int applePrice = 2;
+        int waterPrice = 1;
+        int change = 0;
+
+        String message = "Please select the product:\n1 -Beer, price: %d \n2 -Apple, price: %d\n3 -Water, price: %d";
+        String messageResult = String.format(message, beerPrice, applePrice, waterPrice);
+        System.out.println(messageResult);
+
+        Scanner scanner = new Scanner(System.in);
+        int selectedProduct = scanner.nextInt();
+
+        System.out.println("Enter the amount: ");
+        int enteredAmount = scanner.nextInt();
+
+        int selectedProductPrice = 0;
+        if (selectedProduct == 1) {
+            selectedProductPrice = beerPrice;
+        } else if (selectedProduct == 2) {
+            selectedProductPrice = applePrice;
+        } else if (selectedProduct == 3) {
+            selectedProductPrice = waterPrice;
+        }
+        if (enteredAmount < selectedProductPrice) {
+            System.out.println("There is not enough money!");
+        } else if (enteredAmount == selectedProductPrice) {
+            System.out.println("Thanks for your purchase!");
+        } else change = enteredAmount - selectedProductPrice;
+        System.out.println("Your change: " + change);
+    }
+
+    public static void additionalHomework2Task9() {
+        int a = 1;
+        int b = 4;
+
+        do {
+            int result = b * a;
+            System.out.println(b + " * " + a + " = " + result);
+            a++;
+        } while (a <= 10);
+    }
+}
 
