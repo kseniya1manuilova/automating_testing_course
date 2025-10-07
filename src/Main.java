@@ -218,6 +218,12 @@ public class Main {
         homework1Task1();
         homework1Task2();
         homework1Task3();
+
+        homework2Task1();
+        homework2Task2();
+        homework2Task3();
+        homework2Task4();
+
         additionalHomework2Task1();
         additionalHomework2Task2();
         additionalHomework2Task3();
@@ -324,6 +330,93 @@ public class Main {
 
     }
 
+    public static void homework2Task1() {
+        Scanner scanner = new Scanner(System.in);
+        int score;
+        while (true) {
+            System.out.println("Please enter your score: ");
+            score = scanner.nextInt();
+            if (score < 0 || score > 100) {
+                System.out.println("Incorrect value! Try again.");
+            } else break;
+        }
+        if (score >= 90) {
+            System.out.println("Your grade is A!");
+        } else if (score >= 80) {
+            System.out.println("Your grade is B!");
+        } else if (score >= 70) {
+            System.out.println("Your grade is C!");
+        } else if (score >= 60) {
+            System.out.println("Your grade is D!");
+        } else if (score >= 50) {
+            System.out.println("Your grade is E!");
+        } else {
+            System.out.println("Your grade is F!");
+        }
+    }
+
+    public static void homework2Task2() {
+        String userInput;
+        Scanner scanner = new Scanner(System.in);
+        do {
+            System.out.print("Please enter something: ");
+            userInput = scanner.nextLine();
+            System.out.println("You've entered: " + userInput);
+        }
+        while (!userInput.equals("Exit"));
+        System.out.println("Bye!");
+    }
+
+    public static void homework2Task3() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Please enter a number: ");
+        int x = scanner.nextInt();
+        int sum = 0;
+        if (x >= 0) {
+            for (int i = 0; i <= x; i++) {
+                sum += i;
+            }
+        } else {
+            for (int i = 0; i >= x; i--) {
+                sum += i;
+            }
+        }
+        System.out.printf("The sum of all numbers from 0 to %d is %d", x, sum);
+    }
+
+    public static void homework2Task4() {
+        class channel {
+            int id;
+            String name;
+
+            channel(int id, String text) {
+                this.id = id;
+                this.name = text;
+            }
+        }
+        channel[] channels = {
+                new channel(1, "Nature"),
+                new channel(2, "Culture"),
+                new channel(3, "History"),
+                new channel(4, "MTV")
+        };
+        Scanner scanner = new Scanner(System.in);
+        int selectedChannel;
+        while (true) {
+            System.out.println("Please enter channel N or 0 to exit.");
+            selectedChannel = scanner.nextInt();
+            if (selectedChannel == 0) {
+                System.out.println("Bye!");
+                break;
+            }
+            if (selectedChannel > channels.length || selectedChannel < 0) {
+                System.out.println("This channel does not exist, try again!");
+            } else {
+                System.out.println(channels[selectedChannel - 1].name);
+            }
+
+        }
+    }
     public static void additionalHomework2Task1() {
         System.out.print("Please enter your number: ");
         int number = new Scanner(System.in).nextInt();
@@ -474,3 +567,5 @@ public class Main {
             a++;
         } while (a <= 10);
     }
+}
+
